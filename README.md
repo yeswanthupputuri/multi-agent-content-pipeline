@@ -10,14 +10,8 @@ The system also includes multiple guardrails that validate inputs, research, sha
 
 ## Architecture
 
-
-> **Project Architecture Diagram**
->
-> Replace the image below with the architecture image of the project.
-
-```text
 ![Multi-Agent Content Pipeline Architecture](docs/architecture.png)
-```
+
 
 ---
 
@@ -69,21 +63,17 @@ The Writer receives the research and creates the requested content.
 
 For the initial generation, it receives:
 
-```text
-Topic
-Content Type
-Requirements
-Research
-Sources
-```
+* Topic
+* Content Type
+* Requirements
+* Research
+* Sources
 
 When the workflow enters a revision loop, the Writer additionally receives:
 
-```text
-Previous Draft
-Editor Feedback
-Fact-Checking Results
-```
+* Previous Draft
+* Editor Feedback
+* Fact-Checking Results
 
 This allows the Writer to improve an existing draft instead of treating every execution as a completely new request.
 
@@ -125,7 +115,7 @@ Their purpose is simple:
 
 ---
 
-## Input Guardrail
+## 1. Input Guardrail
 
 The Input Guardrail validates the initial user request.
 
@@ -139,7 +129,7 @@ It checks whether:
 
 ---
 
-## Research Guardrail
+## 2. Research Guardrail
 
 After the Researcher finishes, the Research Guardrail checks whether usable research was produced.
 
@@ -168,15 +158,13 @@ If the research is irrelevant, the workflow can return to the Researcher.
 
 ---
 
-## Output Guardrail
+## 3. Output Guardrail
 
 The final output is also validated.
 
 The Output Guardrail checks that:
-
-```text
 Final Draft exists & Fact Checking has passed
-```
+
 
 Only then is the workflow marked as successfully completed.
 
@@ -240,11 +228,10 @@ multi-agent-content-pipeline/
 ## 1. Clone the Repository
 
 ```powershell
-git clone <YOUR_GITHUB_REPOSITORY_URL>
+git clone https://github.com/yeswanthupputuri/multi-agent-content-pipeline.git
 cd multi-agent-content-pipeline
 ```
 
----
 
 ## 2. Create Virtual Environment
 
@@ -258,15 +245,11 @@ Activate it:
 .\.venv\Scripts\Activate.ps1
 ```
 
----
-
 ## 3. Upgrade pip
 
 ```powershell
 python -m pip install --upgrade pip
 ```
-
----
 
 ## 4. Install Dependencies
 
@@ -274,23 +257,17 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
----
-
 ## 5. Verify PyTorch and GPU
 
 ```powershell
 python -c "import torch; print(torch.cuda.is_available()); print(torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU')"
 ```
 
----
-
 ## 6. Run the Application
 
 ```powershell
 python run.py
 ```
-
----
 
 # Feature Improvements
 
